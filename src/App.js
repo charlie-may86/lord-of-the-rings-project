@@ -5,7 +5,7 @@ import "./styles.scss";
 
 //Components
 import Header from "./components/Header";
-import MovieCard from "./components/MovieCard";
+// import MovieCard from "./components/MovieCard";
 import MovieSelector from "./components/MovieSelector";
 
 const token = "eSN8I7cd6_NAGmdIXKEK";
@@ -18,11 +18,10 @@ function App() {
   };
 
   useEffect(() => {
-    console.log("this is the useEffect");
     axios
       .get("https://the-one-api.dev/v2/movie", config)
       .then((res) => {
-        console.log(res.data.docs);
+        setMovies(res.data.docs);
       })
       .catch((err) => {
         console.log(err);
@@ -32,8 +31,7 @@ function App() {
   return (
     <div>
       <Header />
-      <MovieSelector />
-      <MovieCard />
+      <MovieSelector movies={movies} />
     </div>
   );
 }
