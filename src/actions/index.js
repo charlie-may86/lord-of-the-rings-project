@@ -26,7 +26,7 @@ export const getMovies = () => {
   };
 };
 
-getMovies()
+
 
 export const fetchMovieLoading = () => {
   return {
