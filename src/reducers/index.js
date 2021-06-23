@@ -1,7 +1,7 @@
 import {
   FETCH_MOVIE_LOADING,
-  FETCH_MOVIE_FAIL,
-  FETCH_MOVIE_SUCCESS,
+  // FETCH_MOVIE_FAIL,
+  // FETCH_MOVIE_SUCCESS,
 } from "../actions";
 
 const intialState = {
