@@ -1,54 +1,32 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext } from "react";
 import axios from "axios";
 
 import MovieCard from "./MovieCard";
+import LORContext from "../contexts/LORContext";
 
-const token = "eSN8I7cd6_NAGmdIXKEK";
+
 
 const MovieSelector = () => {
-  const [movies, setMovies] = useState([]);
-  const [movieList, setMovieList] = useState([]);
 
-  const config = {
-    headers: { Authorization: `Bearer ${token}` },
-  };
+  const movies = useContext(LORContext)
+  console.log(movies);
 
-  useEffect(() => {
-    axios
-      .get("https://the-one-api.dev/v2/movie", config)
-      .then((res) => {
-        setMovies(res.data.docs);
-        setMovieList(res.data.docs);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
 
   const handleLOTRClick = () => {
-    console.log("this is the LOTR button");
-    setMovieList(movies);
-    setMovieList(
-      movies.filter(
-        (movie) =>
-          movie.name === "The Fellowship of the Ring" ||
-          movie.name === "The Two Towers " ||
-          movie.name === "The Return of the King"
-      )
-    );
+    
   };
 
   const handleHobbitClick = () => {
-    console.log("this is the hobbit click");
-    setMovieList(movies);
-    setMovieList(
-      movies.filter(
-        (movie) =>
-          movie.name === "The Unexpected Journey" ||
-          movie.name === "The Desolation of Smaug" ||
-          movie.name === "The Battle of the Five Armies"
-      )
-    );
+    // console.log("this is the hobbit click");
+    // setMovieList(movies);
+    // setMovieList(
+    //   movies.filter(
+    //     (movie) =>
+    //       movie.name === "The Unexpected Journey" ||
+    //       movie.name === "The Desolation of Smaug" ||
+    //       movie.name === "The Battle of the Five Armies"
+    //   )
+    // );
   };
 
   return (
@@ -63,7 +41,7 @@ const MovieSelector = () => {
         </button>
       </div>
       <div className = 'movieList'>
-        {movieList.map((movie) => (
+        {movies.map((movie) => (
           <MovieCard movie={movie} key={movie.id} />
         ))}
       </div>
