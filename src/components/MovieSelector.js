@@ -7,7 +7,7 @@ import LORContext from "../contexts/LORContext";
 const MovieSelector = () => {
   const movies = useContext(LORContext);
   const [movieList, setMovieList] = useState([]);
-  console.log(movies);
+
 
   const handleLOTRClick = () => {
     console.log("this is LOTR click");
@@ -48,7 +48,7 @@ const MovieSelector = () => {
       </div>
       <div className="movieList">
         {movieList.map((movie) => (
-          <MovieCard movie={movie} key={movie.id} />
+          <MovieCard movie={movie} key={movie._id} />
         ))}
       </div>
     </div>
